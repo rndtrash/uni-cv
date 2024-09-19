@@ -33,7 +33,6 @@ while True:
         cross_color = (0, int(green), 0)
     else:
         cross_color = (int(blue), 0, 0)
-    # cross_color = (int(blue), int(green), int(red))
 
     # Рисуем
     cv2.line(frame, (center_x - 50, center_y - 50), (center_x + 50, center_y + 50), cross_color, 3)  # Горизонтальная линия
