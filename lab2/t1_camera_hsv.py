@@ -1,21 +1,21 @@
 import cv2
+import sys
 
-video_url = "http://192.168.28.140:8080/video"
-
-cap = cv2.VideoCapture(video_url)
-
+cap = cv2.VideoCapture(0)
 if not cap.isOpened():
-    print("Ошибка открытия видеопотока с телефона")
-    exit()
+    print("Не удалось открыть камеру")
+    sys.exit(-1)
 
 while True:
     ret, frame = cap.read()
-
     if not ret:
         print("Ошибка при получении кадра")
         break
 
-    cv2.imshow('Видео с камеры телефона', frame)
+    hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+
+    cv2.imshow('BGR', frame)
+    cv2.imshow('HSV', hsv_frame)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
